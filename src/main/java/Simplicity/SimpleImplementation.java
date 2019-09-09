@@ -15,7 +15,8 @@ public class SimpleImplementation {
             Character letter = upperInput.charAt(i);
             String out = null;
             out = Ceasar.getOrDefault(letter, out);
-            outString += out.toUpperCase() + " ";
+            String upperOut = out.toUpperCase();
+            outString += upperOut + " ";
         }
         return outString;
     }
