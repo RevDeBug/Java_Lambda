@@ -1,0 +1,8 @@
+Repository.Port=42734;
+Repository.Address=crash-reports.revdebug.com;
+Repository.Path=C:\Users\adam.kruszewski\Documents\RevDeBug\;
+SolutionName=JavaLambda;
+Application.Name=JavaLambda;
+StateStorageClassName=CrashRecorder;
+AuthorizationToken=;
+Release=;

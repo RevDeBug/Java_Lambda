@@ -1,0 +1,46 @@
+plugins {
+    id 'java'
+}
+
+version '1.0'
+
+configurations {
+    uberJar
+}
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    maven {
+        url 'http://192.168.1.101:55000'
+    }
+
+}
+
+dependencies {
+    compile 'com/revdebug:compiler8:3.0'
+    uberJar 'com/revdebug:compiler8:3.0'
+    compile 'com/revdebug:RevDeBug:3.0'
+    uberJar 'com/revdebug:compiler8:3.0'
+}
+
+compileJava {
+    options.compilerArgs = [
+            "-processor", "compiler8.ast.RevDeBugProcessor",
+            "-ArecordServerAddress=crash-reports.revdebug.com",
+            "-ArecordServerPort=42734",
+            "-ArecordingMode=CrashRecorder",
+            "-AapplicationName=Java_Lambda",
+            "-AsolutionName=Java_Lambda",
+            "-ArepositoryPath=C:\\Users\\JaJanken\\Documents\\RevDeBug\\",
+            "-AuploadMetadata=true"
+
+    ]
+}
+
+jar {
+    from {
+        configurations.uberJar.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
